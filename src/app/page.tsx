@@ -27,7 +27,7 @@ export default function Home() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [clientstream, setClientStream] = useState<MediaStream | null>(null);
   useEffect(() => {
-    const socket = io("http://localhost:3010/")
+    const socket = io()
     setSocket(socket)
     socket.on("messageMe", (data: any) => {
       if (data.type === "note") {
@@ -41,7 +41,7 @@ export default function Home() {
       }
     })
 
-    socket.on("messageYou", (data) => {
+    socket.on("messageYou", (data: any) => {
       if (data.type === "note") {
         setNotice(data.name + " " + data.msg)
         setTimeout(() => {
@@ -53,7 +53,7 @@ export default function Home() {
       }
     })
 
-    socket.on("webYou", async (data) => {
+    socket.on("webYou", async (data: any) => {
       let packagedData = JSON.parse(data.myStream);
       const newStream = await yourWebcam(packagedData)
 
@@ -96,7 +96,7 @@ export default function Home() {
 
   const closeWebcam = async () => {
     const tracks = stream?.getTracks();
-    tracks && tracks.forEach((track) => track.stop());
+    tracks && tracks.forEach((track: any) => track.stop());
     // setVideoCallOpen(false)
   }
 
