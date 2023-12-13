@@ -27,8 +27,9 @@ export default function Home() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [clientstream, setClientStream] = useState<MediaStream | null>(null);
   useEffect(() => {
-    const socket = io("https://my-chat-jiblno9t9-lockhearts-projects.vercel.app")
+    const socket = io("")
     setSocket(socket)
+
     socket.on("messageMe", (data: any) => {
       if (data.type === "note") {
         setNotice(data.msg + " " + data.room)
@@ -68,7 +69,7 @@ export default function Home() {
 
   useEffect(() => {
     receivedMsg && setArrayMsg([...arrayMsg, receivedMsg])
-  })
+  }, [receivedMsg])
 
   const enterRoom = () => {
     setInRoom(true)
