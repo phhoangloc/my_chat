@@ -50,6 +50,6 @@ app.prepare().then(() => {
     });
 
     httpServer.listen(port, () => {
-        console.log('> Ready on http://localhost:3010');
+        console.log('> Ready on http://localhost:3000');
     });
 });
