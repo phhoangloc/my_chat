@@ -11,6 +11,7 @@ const handle = app.getRequestHandler();
 const server = express();
 const httpServer = http.createServer(server);
 const io = new Server(httpServer);
+const port = process.env.port || 3000;
 
 app.prepare().then(() => {
     server.get('*', (req, res) => {
@@ -48,7 +49,7 @@ app.prepare().then(() => {
         });
     });
 
-    httpServer.listen(3010, () => {
+    httpServer.listen(port, () => {
         console.log('> Ready on http://localhost:3010');
     });
 });
