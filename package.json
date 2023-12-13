@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node src/server.js",
-    "build": "next build",
+    "build": "node src/server.js",
     "start": "node src/server.js",
     "lint": "next lint"
   },
