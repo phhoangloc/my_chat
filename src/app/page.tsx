@@ -27,7 +27,7 @@ export default function Home() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [clientstream, setClientStream] = useState<MediaStream | null>(null);
   useEffect(() => {
-    const socket = io()
+    const socket = io("https://my-chat-jiblno9t9-lockhearts-projects.vercel.app")
     setSocket(socket)
     socket.on("messageMe", (data: any) => {
       if (data.type === "note") {
